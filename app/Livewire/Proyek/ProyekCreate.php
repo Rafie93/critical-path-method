@@ -29,6 +29,7 @@ class ProyekCreate extends Component
     public function render()
     {
         $clients = Client::all();
+        
         return view('livewire.proyek.proyek-create',compact('clients'));
     }
     public function store(){
