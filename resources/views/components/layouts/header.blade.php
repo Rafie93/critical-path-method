@@ -1,7 +1,7 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="#">
-        Berkat Imanuel
+        Berkat Imanuel Pratama
       {{-- <img class="mt-4" src="{{asset('images/logo.png')}}" alt="" srcset="" style="width: 60px;height: 60px;"> --}}
     </a>
     <!-- Sidebar Toggle-->
