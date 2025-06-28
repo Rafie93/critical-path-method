@@ -23,6 +23,13 @@ class JadwalCreate extends Component
         $this->tanggal_mulai = $d->tgl_mulai;
         $this->jumlah_item_kegiatan = $d->kegiatanProyek->count();
         $this->total_durasi_kegiatan = $d->kegiatanProyek->sum('durasi');
+        foreach ($d->kegiatanProyek()->get() as $key => $value) {
+            $value->ls = 0;
+            $value->lf =0;
+            $value->total_float = 0;
+            $value->free_float = 0;
+            $value->save();
+        }
 
     }
     public function hitung(){
@@ -42,7 +49,7 @@ class JadwalCreate extends Component
             'cepat_mulai' =>$cpm['es'],
             'cepat_selesai' => $cpm['ef'],
             'lambat_mulai' =>$cpm['ls'],
-            'lambat_selesai' =>$cpm['ef'],
+            'lambat_selesai' =>$cpm['lf'],
             'total_float' =>$cpm['total_float'],
             'free_float' => $cpm['free_float'],
            ]);

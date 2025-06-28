@@ -14,4 +14,12 @@ class SuplaiRead extends Component
         $data= SuplaiBahan::latest()->paginate(10);
         return view('livewire.suplai.suplai-read',compact('data'));
     }
+    public function delete($id){
+        $data= SuplaiBahan::find($id);
+        $data->delete();
+        $this->dispatch(
+            'alert',
+            ['type' => 'success',  'message' => 'Data Berhasil dihapus']
+        );
+    }
 }

@@ -28,10 +28,10 @@
               <div class="sb-nav-link-icon"><i class="fas fa-bolt"></i></div>
               Aktivitas
             </a>  
-            {{-- <a class="nav-link {{request()->segment(1) == 'suplai' ? 'active' : ''}} " href="{{route('suplai')}}" wire:navigate>
+            <a class="nav-link {{request()->segment(1) == 'suplai' ? 'active' : ''}} " href="{{route('suplai')}}" wire:navigate>
               <div class="sb-nav-link-icon"><i class="fas fa-bolt"></i></div>
               Suplai
-            </a>   --}}
+            </a>  
             {{-- @endif --}}
           
             {{-- @if (auth()->user()->role==1 ) --}}
@@ -52,10 +52,10 @@
                   <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                   Tukang
                 </a>
-                {{-- <a class="nav-link {{request()->segment(2) == 'bahan' ? 'active' : ''}}" href="{{route('master.bahan')}}" wire:navigate>
+                 <a class="nav-link {{request()->segment(2) == 'bahan' ? 'active' : ''}}" href="{{route('master.bahan')}}" wire:navigate>
                   <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                   Bahan Material
-                </a> --}}
+                </a> 
               
               </nav>
             </div>

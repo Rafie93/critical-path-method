@@ -41,6 +41,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/proyek',ProyekRead::class)->name('proyek');
     Route::get('/proyek/create',ProyekCreate::class)->name('proyek.create');
+    Route::get('/proyek/edit/{id}',ProyekCreate::class)->name('proyek.edit');
+
     Route::get('/proyek/kegiatan/{id}',KegiatanController::class)->name('proyek.kegiatan');
 
     Route::get('/jadwal',JadwalRead::class)->name('jadwal');
@@ -52,6 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/suplai',SuplaiRead::class)->name('suplai');
     Route::get('/suplai/create',SuplaiCreate::class)->name('suplai.create');
+    Route::get('/suplai/edit/{id}',SuplaiCreate::class)->name('suplai.edit');
 
     Route::get('/master/tukang',TukangController::class)->name('master.tukang');
     Route::get('/master/bahan',BahanMaterialController::class)->name('master.bahan');

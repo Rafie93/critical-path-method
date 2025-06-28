@@ -76,6 +76,7 @@
                                 <input type="file" class="form-control" id="arsip_proyek" wire:model="arsip_proyek">
                                 @error('arsip_proyek') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
+                            <br/>
                             <button type="submit" class="btn btn-primary">Create Proyek</button>
                         </form>
                     </div>

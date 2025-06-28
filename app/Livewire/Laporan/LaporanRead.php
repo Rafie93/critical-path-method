@@ -6,6 +6,7 @@ use App\Models\AktivitasProyek;
 use App\Models\Jadwal;
 use App\Models\KegiatanProyek;
 use App\Models\Proyek;
+use App\Models\SuplaiBahan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Livewire\Component;
@@ -21,7 +22,7 @@ class LaporanRead extends Component
     public function print(){
         if ($this->type=="pemakaian") {
            return redirect()->route(
-            'laporan.pemakaian'  );
+            'laporan.pemakaian.pdf');
         }elseif ($this->type=="jadwal") {
             return redirect()->route(
                 'laporan.jadwal.pdf');
@@ -48,7 +49,11 @@ class LaporanRead extends Component
         return view('livewire.laporan.pdf.laporan-jadwal',compact('data','bulan'));
     }
     function pdfpemakaian(Request $request) {
-        
+        $now= date('Y');
+       
+        $data = SuplaiBahan::orderBy('tanggal','asc')
+                ->whereYear('tanggal',$now)->get();
+        return view('livewire.laporan.pdf.laporan-pemakaian',compact('data'));
     }
     function pdfproyek(Request $request) {
         $now= date('Y');

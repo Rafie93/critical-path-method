@@ -35,4 +35,16 @@ class SuplaiBahan extends Model
     {
         return $this->belongsTo(KegiatanProyek::class, 'id_kegiatan');
     }
+    public function statusDisplay(){
+        if($this->status==0){
+            return 'Draft';
+        }else if($this->status==1){
+            return 'Pengajuan';
+        }else if($this->status==2){
+            return 'Disetujui';
+        }else if($this->status==9){
+            return 'Ditolak';
+        }
+        return '-';
+    }
 }

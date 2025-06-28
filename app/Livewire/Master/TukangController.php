@@ -4,6 +4,7 @@ namespace App\Livewire\Master;
 
 use App\Models\PesananKendaraan;
 use App\Models\Sales;
+use App\Models\SuplaiBahan;
 use App\Models\Tukang;
 use App\Models\User;
 use Livewire\Component;
@@ -41,7 +42,7 @@ class TukangController extends Component
                 'name' => $this->nama,
                 'email' => $this->email,
                 'level' => 2,
-                'password' =>bcrypt($this->password)
+                'password' =>bcrypt(123456)
             ]);
             $this->id_user = $user->id;
         }
@@ -92,19 +93,24 @@ class TukangController extends Component
         $this->dispatch('show-modal');
     }
     public function delete($id){
-        // $count = PesananKendaraan::where('id_sales',$id)->count();
-        // if ($count > 0) {
-        //     $this->dispatch(
-        //         'alert',
-        //         ['type' => 'warning',  'message' => "Data Tidak dapat dihapus terkait pada Pesanan"]
-        //     );
-        //     return;
-        // }
+        $count = SuplaiBahan::where('id_tukang',$id)->count();
+        if ($count > 0) {
+            $this->dispatch(
+                'alert',
+                ['type' => 'warning',  'message' => "Data Tidak dapat dihapus terkait pada suplai bahan"]
+            );
+            return;
+        }
         $data = Tukang::find($id);
         if($data){
-            $idUser = $data->id_use;
+            $idUser = $data->id_user;
             $data->delete();
-            // User::find($idUser)->delete();
+            if($idUser){
+                $user = User::find($idUser);
+                if($user){
+                    $user->delete();
+                }
+            }
         }
         $this->alertSuccess('Data Tukang Berhasil dihapus');
     }

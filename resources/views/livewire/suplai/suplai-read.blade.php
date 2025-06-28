@@ -40,17 +40,20 @@
                     @foreach ($data as $key=> $item)
                     <tr>
                         <td>{{ $no++}}</td>
-                        <td>{{$item->tukang->nama}}</td>
+                        <td>{{$item->tukang ? $item->tukang->nama : '-'}}</td>
                         <td>{{ $item->tanggal }}</td>
-                        <td>{{ $item->kegiatan->proyek->nama_proyek }}</td>
-                        <td>{{ $item->kegiatan->nama_kegiatan }}</td>
-                         <td>{{ $item->bahan->nama_bahan }}</td>
+                        <td>{{ $item->kegiatanProyek->proyek->nama_proyek }}</td>
+                        <td>{{ $item->kegiatanProyek->nama_kegiatan }}</td>
+                         <td>{{ $item->bahanMaterial->nama_bahan }}</td>
                          <td align="center">{{ $item->jumlah }}</td>
-                         <td>{{ $item->status }}</td>
+                         <td>{{ $item->statusDisplay() }}</td>
 
-                       <td>
-                        
-                       </td>
+                         <td>
+                            <a href="{{route('suplai.edit',$item->id)}}" class="btn btn-success" 
+                                >Edit</a>
+                            <a wire:click="delete('{{$item->id}}')" class="btn btn-danger" 
+                                >Delete</a>
+                        </td>
                         
                     </tr>
                     @endforeach

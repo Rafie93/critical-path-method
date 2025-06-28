@@ -10,6 +10,8 @@ use Livewire\WithFileUploads;
 class ProyekCreate extends Component
 {
     use WithFileUploads;
+
+    public $proyek_id;
     public $nama_proyek;
     public $id_client;
     public $alamat_proyek;
@@ -23,8 +25,22 @@ class ProyekCreate extends Component
     public $arsip_proyek;
     public $id_user;
     
-    public function mount(){
+    public function mount($id=null){
         $this->id_user = auth()->user()->id;
+        if ($id) {
+            $this->proyek_id=$id;
+            $proyek = Proyek::find($id);
+            $this->id_user = $proyek->id_user;
+            $this->nama_proyek = $proyek->nama_proyek;
+            $this->id_client = $proyek->id_client;
+            $this->alamat_proyek = $proyek->alamat_proyek;
+            $this->deskripsi_proyek = $proyek->deskripsi_proyek;
+            $this->tgl_mulai = $proyek->tgl_mulai;
+            $this->batas_waktu = $proyek->batas_waktu;
+            $this->status_proyek= $proyek->status_proyek;
+            $this->progress_proyek = $proyek->progress_proyek;
+            // $this->arsip_proyek = $proyek->arsip_proyek;
+        }
     }
     public function render()
     {
@@ -42,7 +58,7 @@ class ProyekCreate extends Component
             'status_proyek' => 'required',
             'id_user' => 'required',
         ]);
-        Proyek::create($this->all());
+        Proyek::updateOrCreate(['id_proyek'=>$this->proyek_id],$this->all());
         if($this->foto_rancangan){
             $this->foto_rancangan->store('images/rancangan');
         }

@@ -16,7 +16,8 @@ class BahanMaterial extends Model
         'merk',
         'ukuran',
         'harga',
-        'kategori'
+        'kategori',
+        'satuan'
     ];
 
     public function suplaiBahan()

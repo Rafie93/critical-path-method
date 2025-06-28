@@ -27,6 +27,7 @@
                             <th>Merk</th>
                             <th>Ukuran</th>
                             <th>Harga</th>
+                            <th>Satuan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                         <td>{{$k->merk}}</td>
                         <td>{{$k->ukuran}}</td>
                         <td align="right">{{number_format($k->harga)}}</td>
+                        <td>{{$k->satuan}}</td>
                         <td><a wire:click="showForm('{{$k->id_bahan}}')" class="btn btn-secondary" 
                             >Edit</a>
                             <button wire:click="delete('{{$k->id_bahan}}')" class="btn btn-danger" 
@@ -92,6 +94,11 @@
                     <label for="recipient" class="form-control-label">Harga : (*)</label>
                     <input type="number" class="form-control" id="recipient" wire:model="harga"/>
                     @error('harga') <i class="text-danger">{{ $message }}</i> @enderror
+                </div>
+                <div class="form-group mt-2">
+                    <label for="recipient" class="form-control-label">Satuan :</label>
+                    <input type="text" class="form-control" id="recipient" wire:model="satuan"/>
+                    @error('satuan') <i class="text-danger">{{ $message }}</i> @enderror
                 </div>
                
             </div>

@@ -40,6 +40,13 @@ class Proyek extends Model
     {
         return $this->hasMany(KegiatanProyek::class, 'id_proyek');
     }
+    public function jadwal()
+    {
+       return Jadwal::whereHas('kegiatan', function ($query) {
+            return $query->where('IDUser', '=', 1);
+        })->get();
+    }
+   
     public function display_kegiatan(){
         $d = $this->hasMany(KegiatanProyek::class, 'id_proyek');
         if($d->count()>0){

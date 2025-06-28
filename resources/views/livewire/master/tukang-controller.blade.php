@@ -36,7 +36,7 @@
                         <td>{{ $no++}}</td>
                         <td>{{ $sale->nama }}</td>
                         <td>{{ $sale->no_telp }}</td>
-                        <td>{{ $sale->email }}</td>
+                        <td>{{ $sale->user ? $sale->user->email : '' }}</td>
                         <td>{{ $sale->alamat }}</td>
                         <td align="center">{{ $sale->is_kepala==1 ? 'Ya' : 'Tidak' }}</td>
                         <td><a wire:click="edit('{{$sale->id_tukang}}')" class="btn btn-secondary" 

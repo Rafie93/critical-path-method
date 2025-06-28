@@ -5,6 +5,7 @@ namespace App\Livewire\Customer;
 use App\Models\Client;
 use App\Models\Customer;
 use App\Models\PesananKendaraan;
+use App\Models\Proyek;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -78,18 +79,21 @@ class CustomerData extends Component
         $this->dispatch('show-modal');
     }
     public function delete($id){
-        // $count = PesananKendaraan::where('id_client',$id)->count();
-        // if ($count > 0) {
-        //     $this->dispatch(
-        //         'alert',
-        //         ['type' => 'warning',  'message' => "Data Tidak dapat dihapus terkait pada Pesanan"]
-        //     );
-        //     return;
-        // }
-        $data = Client::find($id);
-        if($data){
+    
+        $pr = Proyek::where('id_client',$id)->count();
+        if($pr == 0){
+            $data = Client::find($id);
+
             $data->delete();
+            $this->dispatch(
+                'alert',
+                ['type' => 'success',  'message' => 'Data Client Berhasil dihapus']
+            );
+        }else{
+            $this->dispatch(
+                'alert',
+                ['type' => 'success',  'message' => 'Data client tidak dapat dihapus karena terkait dengan Proyek']
+            );
         }
-        $this->alertSuccess('Data Pekerjaan Berhasil dihapus');
     }
 }

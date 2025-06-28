@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class BahanMaterialController extends Component
 {
-    public $openForm = false,$bahan_id,$nama_bahan,$ukuran,$merk,$harga=0,$kategori;
+    public $openForm = false,$bahan_id,$nama_bahan,$ukuran,$merk,$harga=0,$kategori,$satuan;
     public function render()
     {
         $data = BahanMaterial::paginate(10);
@@ -26,6 +26,7 @@ class BahanMaterialController extends Component
         $this->ukuran=$edit->ukuran;
         $this->harga=$edit->harga;
         $this->kategori=$edit->kategori;
+        $this->satuan =$edit->satuan;
         $this->dispatch('show-modal');
     }
 
@@ -41,7 +42,8 @@ class BahanMaterialController extends Component
             'kategori' => $this->kategori,
             'merk' => $this->merk,
             'ukuran' => $this->ukuran,
-            'harga' => $this->harga
+            'harga' => $this->harga,
+            'satuan' => $this->satuan
         ]);
         $this->alertSuccess('Data Bahan Material Berhasil diperbaharui');
         $this->nama_bahan = "";

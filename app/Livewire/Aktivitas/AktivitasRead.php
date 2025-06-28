@@ -20,6 +20,9 @@ class AktivitasRead extends Component
         if($data){
             $data->delete();
         }
-        $this->alertSuccess('Data Aktifitas Berhasil dihapus');
+        $this->dispatch(
+            'alert',
+            ['type' => 'success',  'message' => 'Data Aktifitas Berhasil dihapus']
+        );
     }
 }
