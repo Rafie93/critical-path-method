@@ -24,7 +24,7 @@ class TukangController extends Component
     public $password;
     public function render()
     {
-        $sales = Tukang::paginate(10);
+        $sales = Tukang::latest()->paginate(10);
         return view('livewire.master.tukang-controller',compact('sales'));
     }
     public function iskepala(){}
@@ -61,6 +61,7 @@ class TukangController extends Component
         $this->resetInputFields();
         $this->alertSuccess('Data Tukang Berhasil Ditambahkan');
         $this->dispatch('close-modal');
+        return redirect()->route('master.tukang');
     }
     public function alertSuccess($message)
     {

@@ -13,7 +13,7 @@ class BahanMaterialController extends Component
     public $openForm = false,$bahan_id,$nama_bahan,$ukuran,$merk,$harga=0,$kategori,$satuan;
     public function render()
     {
-        $data = BahanMaterial::paginate(10);
+        $data = BahanMaterial::latest()->paginate(10);
         return view('livewire.master.bahan-controller',compact('data'));
     }
 
@@ -54,6 +54,7 @@ class BahanMaterialController extends Component
         $this->harga=0;
         $this->openForm=false;
         $this->dispatch('close-modal');
+        return redirect()->route('master.bahan');
     }
 
     public function delete($id){
