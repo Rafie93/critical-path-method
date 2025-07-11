@@ -63,8 +63,14 @@ class AktivitasCreate extends Component
                 'keterangan' => $this->keterangan
             ]
         );
+        $s = KegiatanProyek::where('id_kegiatan',$this->id_kegiatan)->first();
+        if ($s) {
+            $s->progress_kegiatan = $this->progress_kegiatan;
+            $s->save();
+        }
 
         $this->alertSuccess('Aktifitas Berhasil ditambahkan');
+
         return redirect()->route('aktivitas');
     }
 

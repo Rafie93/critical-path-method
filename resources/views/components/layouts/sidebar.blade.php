@@ -9,26 +9,26 @@
               Dashboard
             </a>
             @if (auth()->user()->level==1 )
-              <a class="nav-link {{request()->segment(1) == 'client' ? 'active' : ''}} " href="{{route('customer')}}" wire:navigate>
+              <a class="nav-link {{request()->segment(1) == 'client' ? 'active' : ''}} " href="{{route('customer')}}" >
                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                 Client
               </a>
-              <a class="nav-link {{request()->segment(1) == 'proyek' ? 'active' : ''}} " href="{{route('proyek')}}" wire:navigate>
+              <a class="nav-link {{request()->segment(1) == 'proyek' ? 'active' : ''}} " href="{{route('proyek')}}" >
                 <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
                 Proyek
               </a>
 
-            <a class="nav-link {{request()->segment(1) == 'jadwal' ? 'active' : ''}} " href="{{route('jadwal')}}" wire:navigate>
+            <a class="nav-link {{request()->segment(1) == 'jadwal' ? 'active' : ''}} " href="{{route('jadwal')}}" >
               <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
               Jadwal (CPM)
             </a>
             @endif
             @if (auth()->user()->level==1 || auth()->user()->level==2)
-            <a class="nav-link {{request()->segment(1) == 'aktivitas' ? 'active' : ''}} " href="{{route('aktivitas')}}" wire:navigate>
+            <a class="nav-link {{request()->segment(1) == 'aktivitas' ? 'active' : ''}} " href="{{route('aktivitas')}}" >
               <div class="sb-nav-link-icon"><i class="fas fa-bolt"></i></div>
               Aktivitas
             </a>  
-            <a class="nav-link {{request()->segment(1) == 'suplai' ? 'active' : ''}} " href="{{route('suplai')}}" wire:navigate>
+            <a class="nav-link {{request()->segment(1) == 'suplai' ? 'active' : ''}} " href="{{route('suplai')}}" >
               <div class="sb-nav-link-icon"><i class="fas fa-bolt"></i></div>
               Suplai
             </a>  
@@ -44,15 +44,15 @@
             </a>
             <div class="collapse {{ request()->segment(1) == 'master' ? 'show' : '' }}" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link {{request()->segment(2) == 'user' ? 'active' : ''}} " href="{{route('setting.user')}}" wire:navigate>
+                <a class="nav-link {{request()->segment(2) == 'user' ? 'active' : ''}} " href="{{route('setting.user')}}" >
                   <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                   User Aplikasi
                 </a>
-                <a class="nav-link {{request()->segment(2) == 'tukang' ? 'active' : ''}} " href="{{route('master.tukang')}}" wire:navigate>
+                <a class="nav-link {{request()->segment(2) == 'tukang' ? 'active' : ''}} " href="{{route('master.tukang')}}" >
                   <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                   Tukang
                 </a>
-                 <a class="nav-link {{request()->segment(2) == 'bahan' ? 'active' : ''}}" href="{{route('master.bahan')}}" wire:navigate>
+                 <a class="nav-link {{request()->segment(2) == 'bahan' ? 'active' : ''}}" href="{{route('master.bahan')}}" >
                   <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                   Bahan Material
                 </a> 
@@ -78,11 +78,11 @@
             </a>
             <div class="collapse {{ request()->segment(1) == 'setting' ? 'show' : '' }}" id="collapseLayouts3" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link {{request()->segment(2) == 'user' ? 'active' : ''}} " href="{{route('setting.user')}}" wire:navigate>
+                <a class="nav-link {{request()->segment(2) == 'user' ? 'active' : ''}} " href="{{route('setting.user')}}" >
                   <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                   User Aplikasi
                 </a>
-                <a class="nav-link {{request()->segment(2) == 'harikerja' ? 'active' : ''}}" href="{{route('setting.harikerja')}}" wire:navigate>
+                <a class="nav-link {{request()->segment(2) == 'harikerja' ? 'active' : ''}}" href="{{route('setting.harikerja')}}" >
                   <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                   Hari Kerja
               </a>

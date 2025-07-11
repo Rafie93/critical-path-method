@@ -49,11 +49,11 @@
                                 @error('batas_waktu') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="foto_rancangan">Foto Rancangan</label>
                                 <input type="file" class="form-control" id="foto_rancangan" wire:model="foto_rancangan">
                                 @error('foto_rancangan') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
+                            </div> --}}
                           
                             <div class="form-group">
                                 <label for="status_proyek">Status Proyek</label>
@@ -71,11 +71,11 @@
                                 <input type="number" class="form-control" id="progress_proyek" wire:model="progress_proyek">
                                 @error('progress_proyek') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="arsip_proyek">Arsip Proyek</label>
                                 <input type="file" class="form-control" id="arsip_proyek" wire:model="arsip_proyek">
                                 @error('arsip_proyek') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
+                            </div> --}}
                             <br/>
                             <button type="submit" class="btn btn-primary">Create Proyek</button>
                         </form>

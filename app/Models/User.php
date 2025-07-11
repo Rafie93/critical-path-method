@@ -50,9 +50,9 @@ class User extends Authenticatable
         if($this->level==1){
             return 'Admin';
         }else if($this->level==2){
-            return 'Tukang';
+            return 'Kepala Tukang';
         }elseif($this->level==3){
-            return 'Manager';
+            return 'Direktur';
         }
     }
 }

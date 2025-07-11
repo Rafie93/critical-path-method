@@ -16,7 +16,7 @@ class CustomerData extends Component
     public $updateMode =false,$id_client,$nama_perusahaan,$nama_client,$no_npwp,$nik,$alamat,$deskripsi,$no_hp;
     public function render()
     {
-        $data = Client::paginate(10);
+        $data = Client::latest()->paginate(10);
         return view('livewire.customer.customer-data',compact('data'));
     }
 
@@ -45,6 +45,7 @@ class CustomerData extends Component
         $this->resetInputFields();
         $this->alertSuccess('Data Client Berhasil diperbaharui');
         $this->dispatch('close-modal');
+        return redirect()->route('customer');
     }
     public function alertSuccess($message)
     {
