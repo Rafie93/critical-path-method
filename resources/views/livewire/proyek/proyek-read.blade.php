@@ -50,8 +50,8 @@
                         <td>
                             <a href="{{route('proyek.kegiatan',$item->id_proyek)}}" class="btn btn-success" 
                                 >Kegiatan</a>
-                            <a wire:click="detail('{{$item->id_proyek}}')" class="btn btn-primary" 
-                                >View</a>
+                            {{-- <a wire:click="detail('{{$item->id_proyek}}')" class="btn btn-primary" 
+                                >View</a> --}}
                             <a wire:navigate href="{{route('proyek.edit',$item->id_proyek)}}" class="btn btn-secondary" 
                             >Edit</a>
                             <a wire:click="delete('{{$item->id_proyek}}')" class="btn btn-danger" 
