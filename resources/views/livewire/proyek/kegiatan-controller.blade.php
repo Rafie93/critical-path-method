@@ -36,10 +36,15 @@
         <!-- Button -->
         <div class="px-3 py-2">
           <button type="button" class="btn btn-primary" 
-            data-bs-toggle="modal" data-bs-target="#add_menu_item_modal">
+            data-bs-toggle="modal" data-bs-target="#add_menu_item_modal" wire:click="clickType(1)">
             <i class="fas fa-plus-circle fs-4 me-2"></i>
             Tambah Kegiatan
         </button>
+
+        {{-- <button type="button" class="btn btn-secondary" 
+          data-bs-toggle="modal" data-bs-target="#add_menu_item_modal" wire:click="clickType(2)">
+            Import Kegiatan
+        </button> --}}
         </div>
     
         <!-- Table -->
@@ -148,6 +153,34 @@
 
           </div>
     </div>
+
+    {{--  --}}
+    <div wire:ignore.self class="modal fade" tabindex="-1" id="add_menu_item_modal1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Import Data Kegiatan Dari Proyek</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            </button>
+          </div>
+          <div class="modal-body">
+            <form wire:submit.prevent="store1">
+              <div class="form-group">
+                  <label for="code">Kode Kegiatan</label>
+                  <input type="text" maxlength="4" class="form-control" id="kode_kegiatan" wire:model="kode_kegiatan" name="kode_kegiatan" >
+                  @error('kode_kegiatan') <i class="text-danger">{{ $message }}</i> @enderror
+              </div>
+           
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">IMPORT</button>
+            <button type="button" class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+          </div>
+      </form>
+
+        </div>
+  </div>
 </div>
 
 @push('scripts')
@@ -160,6 +193,7 @@
     })
     Livewire.on('show-modal', () => {
       $('#add_menu_item_modal').modal('show');
+
     });
     </script>
 @endpush

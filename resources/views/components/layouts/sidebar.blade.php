@@ -8,7 +8,7 @@
               <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
               Dashboard
             </a>
-            {{-- @if (auth()->user()->level!=3) --}}
+            @if (auth()->user()->level==1 )
               <a class="nav-link {{request()->segment(1) == 'client' ? 'active' : ''}} " href="{{route('customer')}}" wire:navigate>
                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                 Client
@@ -17,13 +17,13 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-truck"></i></div>
                 Proyek
               </a>
-            {{-- @endif --}}
 
             <a class="nav-link {{request()->segment(1) == 'jadwal' ? 'active' : ''}} " href="{{route('jadwal')}}" wire:navigate>
               <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
               Jadwal (CPM)
             </a>
-            {{-- @if (auth()->user()->role==1 || auth()->user()->role==3) --}}
+            @endif
+            @if (auth()->user()->level==1 || auth()->user()->level==2)
             <a class="nav-link {{request()->segment(1) == 'aktivitas' ? 'active' : ''}} " href="{{route('aktivitas')}}" wire:navigate>
               <div class="sb-nav-link-icon"><i class="fas fa-bolt"></i></div>
               Aktivitas
@@ -32,9 +32,9 @@
               <div class="sb-nav-link-icon"><i class="fas fa-bolt"></i></div>
               Suplai
             </a>  
-            {{-- @endif --}}
+            @endif
           
-            {{-- @if (auth()->user()->role==1 ) --}}
+            @if (auth()->user()->level==1 )
             <div class="sb-sidenav-menu-heading">Master Data</div>
             <a class="nav-link  {{ request()->segment(1) == 'master' ? 'collapsed' : '' }}
                 " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -59,41 +59,17 @@
               
               </nav>
             </div>
-            {{-- @endif
-            @if (auth()->user()->role==1 || auth()->user()->role==3) --}}
+            @endif
+            @if (auth()->user()->level==1 || auth()->user()->level==3) 
               <div class="sb-sidenav-menu-heading">Laporan</div>
               <a class="nav-link  {{ request()->segment(1) == 'laporan' ? 'active' : '' }}
                   " href="{{route('laporan')}}">
                   <div class="sb-nav-link-icon"><i class="fas fa-bar-chart"></i></div>
                   Laporan-Laporan
               </a>
-              {{-- <div class="collapse {{ request()->segment(1) == 'laporan' ? 'show' : '' }}" id="collapseLayouts2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                 
-                  <a class="nav-link {{request()->segment(2) == 'laporan-pesanan' ? 'active' : ''}} "
-                    href="{{route('laporan.form','laporan-pesanan')}}" wire:navigate>
-                    Laporan Jadwal Proyek
-                  </a>
-                  <a class="nav-link {{request()->segment(2) == 'laporan-pembayaran' ? 'active' : ''}}"
-                    href="{{route('laporan.form','laporan-pembayaran')}}" wire:navigate>
-                      Laporan Proyek dan Kegiatan
-                  </a>
-                  <a class="nav-link {{request()->segment(2) == 'laporan-kehadiran' ? 'active' : ''}}" 
-                    href="{{route('laporan.form','laporan-kehadiran')}}" wire:navigate>
-                    Laporan Aktivitas Proyek
-                  </a>
-                  <a class="nav-link {{request()->segment(2) == 'laporan-pencapaian' ? 'active' : ''}}" 
-                    href="{{route('laporan.form','laporan-pencapaian')}}" wire:navigate>
-                    Laporan Pemakaian Bahan
-                  </a>
-                  <a class="nav-link {{request()->segment(2) == 'laporan-pencapaian-sales' ? 'active' : ''}}" 
-                    href="{{route('laporan.form','laporan-pencapaian-sales')}}" wire:navigate>
-                    Laporan Perhitungan Proyek
-                  </a>
-                </nav>
-              </div>     --}}
-            {{-- @endif --}}
-            {{-- @if (auth()->user()->role==1 )
+          
+            @endif
+            {{-- @if (auth()->user()->level==1 )
             <a class="nav-link  {{ request()->segment(1) == 'setting' ? 'collapsed' : '' }}
                 " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts">
                 <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
@@ -117,7 +93,7 @@
            
         </div>
         <div class="sb-sidenav-footer">
-          <div class="small">Logged Role: {{auth()->user()->levels()}}</div>    
+          <div class="small">Logged level: {{auth()->user()->levels()}}</div>    
         </div>
       </nav>
 </div>

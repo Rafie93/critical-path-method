@@ -87,7 +87,7 @@
                 </div>
                 <div class="form-group">
                     <label for="target">Jabatan</label>
-                    <select name="is_kepala" wire:model="is_kepala" class="form-control">
+                    <select name="is_kepala" wire:change="iskepala" wire:model="is_kepala" class="form-control">
                         <option value="0">Anggota</option>
                         <option value="1">Kepala Tukang</option>
                         
@@ -97,7 +97,7 @@
                 </div>
                 @if ($is_kepala==1)
                     <div class="form-group">
-                        <label for="area_sales">Password Login</label>
+                        <label for="area_sales">Password Login Kepala Tukang</label>
                         <input type="password" class="form-control" id="password" wire:model="password" name="password" >
                         @error('password') <i class="text-danger">{{ $message }}</i> @enderror
                     </div>

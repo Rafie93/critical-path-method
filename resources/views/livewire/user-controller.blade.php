@@ -87,7 +87,7 @@
                     <label for="recipient" class="form-control-label">Level :*</label>
                     <select name="role" class="form-control" wire:model="role">
                         <option value="1">Admin</option>
-                        <option value="3">Manager</option>
+                        <option value="3">Direktur</option>
                         
                     </select>
                     @error('role') <i class="text-danger">{{ $message }}</i> @enderror

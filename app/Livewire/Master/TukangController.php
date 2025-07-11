@@ -27,6 +27,7 @@ class TukangController extends Component
         $sales = Tukang::paginate(10);
         return view('livewire.master.tukang-controller',compact('sales'));
     }
+    public function iskepala(){}
 
     public function store()
     {
@@ -42,7 +43,7 @@ class TukangController extends Component
                 'name' => $this->nama,
                 'email' => $this->email,
                 'level' => 2,
-                'password' =>bcrypt(123456)
+                'password' =>bcrypt($this->password ? $this->password : 123456)
             ]);
             $this->id_user = $user->id;
         }

@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class KegiatanController extends Component
 {
-    public $proyek,$updateMode=false,$selected_id,
+    public $proyek,$updateMode=false,$selected_id,$type=1,
     $kode_kegiatan,$nama_kegiatan,$kegiatan_sebelum=[],$durasi=1,$status_kegiatan="Start",$progress_kegiatan=0;
     public function mount($id){
         $this->proyek = Proyek::find($id);
@@ -16,6 +16,9 @@ class KegiatanController extends Component
     public function render()
     {
         return view('livewire.proyek.kegiatan-controller');
+    }
+    public function clickType($id){
+        $this->type = $id;
     }
     public function store(){
         $this->validate([

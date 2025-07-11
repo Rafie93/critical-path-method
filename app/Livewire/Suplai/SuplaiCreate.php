@@ -14,6 +14,11 @@ class SuplaiCreate extends Component
     public $suplai_id, $id_kegiatan,$id_bahan,$jumlah=1,$tanggal,$keterangan,$kegiatans=[],$id_proyek,$status=1,$id_tukang;
     public function mount($id=null){
         $this->tanggal = date('Y-m-d');
+        $level = auth()->user()->level;
+        if ($level==2) {
+            $tuk =  Tukang::where('id_user')->first();
+            $this->id_tukang = $tuk ? $tuk->id_tukang : null;
+        }
         if($id){
             $this->suplai_id = $id;
             $data = SuplaiBahan::find($id);
